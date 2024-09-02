@@ -8,7 +8,9 @@ public class LoginTest
     {
 
         var playwright = await Playwright.CreateAsync();
-        var browser = await playwright.Chromium.LaunchAsync();
+        var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions {
+            Headless= false, SlowMo = 500, Timeout= 80000
+        });
         var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
 
