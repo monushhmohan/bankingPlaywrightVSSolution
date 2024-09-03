@@ -3,14 +3,14 @@ using Microsoft.Playwright;
 
 namespace playwrightParaBank.Tests
 {
-	public class RegisterTest
+	public class RegisterUser
+
 	{
-        [Test]
-		public async Task RegisterTest001()
+		public async Task<(string,string)> RegisterNewUser()
 		{
 			var playwright = await Playwright.CreateAsync();
 			var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions {
-				Headless = false, SlowMo = 500, Timeout= 80000
+				Headless = true, SlowMo = 5, Timeout= 80000
 			});
 			var context = await browser.NewContextAsync();
 			var page = await context.NewPageAsync();
@@ -34,7 +34,7 @@ namespace playwrightParaBank.Tests
             await page.Locator("//*[@id='customer.password']").FillAsync(password);
             await page.Locator("//*[@id='repeatedPassword']").FillAsync(password);
             await page.Locator("//*[@value='Register']").ClickAsync();
-
+            return (username, password);
         }
 
         static string GenerateRandomString(int length)

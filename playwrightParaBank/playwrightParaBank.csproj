@@ -21,8 +21,10 @@
 
   <ItemGroup>
     <None Remove="Tests\" />
+    <None Remove="Utilities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
+    <Folder Include="Utilities\" />
   </ItemGroup>
 </Project>
