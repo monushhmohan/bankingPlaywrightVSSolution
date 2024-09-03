@@ -19,4 +19,10 @@
     <PackageReference Include="Microsoft.Playwright.NUnit" Version="1.46.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
 </Project>
