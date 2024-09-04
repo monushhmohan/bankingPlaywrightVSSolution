@@ -3,26 +3,33 @@ using Microsoft.Playwright;
 
 namespace playwrightParaBank.Tests
 {
-	public class RegisterUser :BaseClass
+    public class BaseClass
 
-	{
-        //protected new IPage page;
-        //public RegisterUser(IPage page)
-        //{
-        //    this.page = page;
-        //}
-        public async Task RegisterNewUser()
-		{
+    {
+        protected IPlaywright playwright;
+        protected IBrowser browser;
+        protected IBrowserContext context;
+        protected IPage page;
 
-            //var playwright = await Playwright.CreateAsync();
-            //var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-            //{
-            //    Headless = true,
-            //    SlowMo = 5,
-            //    Timeout = 80000
-            //});
-            //var context = await browser.NewContextAsync();
-            //var page = await context.NewPageAsync();
+        [SetUp]
+        public async Task SetUp()
+        {
+
+            playwright = await Playwright.CreateAsync();
+            browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = false,
+                SlowMo = 500,
+                Timeout = 80000
+            });
+            context = await browser.NewContextAsync();
+            page = await context.NewPageAsync();
+            await RegisterNewUserAndLogin();
+
+        }
+
+        private async Task RegisterNewUserAndLogin()
+        {
 
             await page.GotoAsync("https://parabank.parasoft.com");
 
@@ -43,10 +50,9 @@ namespace playwrightParaBank.Tests
             await page.Locator("//*[@id='customer.password']").FillAsync(password);
             await page.Locator("//*[@id='repeatedPassword']").FillAsync(password);
             await page.Locator("//*[@value='Register']").ClickAsync();
-            //return (username, password);
+            await page.Locator("//*[contains(@href,'logout')]").ClickAsync();
 
-            await page.GotoAsync("https://parabank.parasoft.com");
-
+            //Login using the above user
             await page.Locator("//*[@name='username']").FillAsync(username);
             await page.Locator("//*[@name='password']").FillAsync(password);
             await page.Locator("//*[@type='submit']").ClickAsync();
@@ -55,7 +61,7 @@ namespace playwrightParaBank.Tests
 
         }
 
-        static string GenerateRandomString(int length)
+        private string GenerateRandomString(int length)
         {
             // Define the characters allowed in the random string
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -67,6 +73,27 @@ namespace playwrightParaBank.Tests
             return new string(Enumerable.Repeat(chars, length)
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
+        [TearDown]
+        public async Task TearDown()
+        {
+            // Clean up Playwright resources
+            if (page != null)
+            {
+                await page.CloseAsync();
+            }
+            if (context != null)
+            {
+                await context.CloseAsync();
+            }
+            if (browser != null)
+            {
+                await browser.CloseAsync();
+            }
+            if (playwright != null)
+            {
+                playwright.Dispose();
+            }
+        }
     }
 }
-
