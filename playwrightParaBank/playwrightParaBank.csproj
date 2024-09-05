@@ -27,4 +27,7 @@
     <Folder Include="Tests\" />
     <Folder Include="Utilities\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Utilities\RegisterUser.cs" />
+  </ItemGroup>
 </Project>
