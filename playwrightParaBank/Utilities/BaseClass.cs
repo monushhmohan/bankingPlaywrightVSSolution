@@ -19,7 +19,7 @@ namespace playwrightParaBank.Tests
             browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = false,
-                SlowMo = 500,
+                SlowMo = 300,
                 Timeout = 80000
             });
             context = await browser.NewContextAsync();
@@ -46,7 +46,9 @@ namespace playwrightParaBank.Tests
             await page.Locator("//*[@id='customer.ssn']").FillAsync("Test");
             var username = GenerateRandomString(9);
             await page.Locator("//*[@id='customer.username']").FillAsync(username);
+            Console.WriteLine($"Username = {username}");
             var password = GenerateRandomString(9);
+            Console.WriteLine($"Password = {password}");
             await page.Locator("//*[@id='customer.password']").FillAsync(password);
             await page.Locator("//*[@id='repeatedPassword']").FillAsync(password);
             await page.Locator("//*[@value='Register']").ClickAsync();
