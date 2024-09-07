@@ -22,10 +22,12 @@
   <ItemGroup>
     <None Remove="Tests\" />
     <None Remove="Utilities\" />
+    <None Remove="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
     <Folder Include="Utilities\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Utilities\RegisterUser.cs" />
