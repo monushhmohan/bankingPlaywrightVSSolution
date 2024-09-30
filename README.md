@@ -73,3 +73,5 @@ Prerequisites
 Jenkins installed and running.
 GitHub account and a repository.
 Git plugin and GitHub Integration plugin installed in Jenkins.
+
+Step 1: Install Jenkins Plugins
