@@ -64,3 +64,5 @@ Additional Information:
 Configure for CI/CD:
 
     If you're integrating the tests into a CI/CD pipeline, ensure Playwright is set to run in headless mode, and configure any necessary files like playwright.config.json for proper execution.
+
+    Jenkins step by step configuration
