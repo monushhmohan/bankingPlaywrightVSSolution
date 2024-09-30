@@ -65,6 +65,11 @@ Configure for CI/CD:
 
     If you're integrating the tests into a CI/CD pipeline, ensure Playwright is set to run in headless mode, and configure any necessary files like playwright.config.json for proper execution.
 
-    Jenkins step by step configuration
+Jenkins step by step configuration
 
-    To link GitHub with Jenkins for Continuous Integration (CI) or Continuous Deployment (CD), you need to set up webhooks, configure a Jenkins job, and make sure Jenkins can access the repository. Here's a step-by-step guide:
+To link GitHub with Jenkins for Continuous Integration (CI) or Continuous Deployment (CD), you need to set up webhooks, configure a Jenkins job, and make sure Jenkins can access the repository. Here's a step-by-step guide:
+
+Prerequisites
+Jenkins installed and running.
+GitHub account and a repository.
+Git plugin and GitHub Integration plugin installed in Jenkins.
