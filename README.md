@@ -75,3 +75,5 @@ GitHub account and a repository.
 Git plugin and GitHub Integration plugin installed in Jenkins.
 
 Step 1: Install Jenkins Plugins
+
+Step 2: Configure GitHub Credentials in Jenkins
