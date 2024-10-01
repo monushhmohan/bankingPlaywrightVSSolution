@@ -79,3 +79,5 @@ Step 1: Install Jenkins Plugins
 Step 2: Configure GitHub Credentials in Jenkins
 
 Step 3: Create a Jenkins Job
+
+Step 4: Configure Source Code Management (SCM)
